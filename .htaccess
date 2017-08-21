@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    #如果域名以api.开头
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{HTTP_HOST} ^api. [NC]
+    #那么执行下面语句
+    RewriteRule ^(.*)$ api.php/$1 [QSA,PT,L]
+
+    #如果传参以/api/开头
+    RewriteCond %{REQUEST_URI} ^/api/ [NC] 
+    #然后继续执行后续语句
+    RewriteRule ^api/(.*)$ api.php/$1 [QSA,L]
+
+    #如果域名以shell.开头
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{HTTP_HOST} ^shell. [NC]
+    #那么执行下面语句
+    RewriteRule ^(.*)$ shell.php/$1 [QSA,PT,L]
+
+    #如果传参以/shell/开头
+    RewriteCond %{REQUEST_URI} ^/shell/ [NC] 
+    #然后继续执行后续语句
+    RewriteRule ^shell/(.*)$ shell.php/$1 [QSA,L]
+
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>

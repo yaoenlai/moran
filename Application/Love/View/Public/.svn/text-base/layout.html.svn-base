@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <block name="title"><title>{$meta_title}｜{$web_site_title}－{$web_site_slogan}</title></block>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="{:C('WEB_SITE_TITLE')}">
+    <meta name="keywords" content="{$meta_keywords}">
+    <meta name="description" content="{$meta_description}">
+    <meta name="generator" content="CoreThink">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{:C('WEB_SITE_TITLE')}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="shortcut icon" type="image/x-icon" href="__ROOT__/favicon.ico">
+    <link rel="apple-touch-icon" type="image/x-icon" href="__ROOT__/logo.png">
+    <link rel="stylesheet" type="text/css" href="__CUI__/css/cui.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/libs/ocicon/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="__HOME_CSS__/home.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/libs/animate/animate.min.css">
+    <block name="style"></block>
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="__PUBLIC__/libs/jquery/1.x/jquery.min.js"></script>
+    <script type="text/javascript">
+        var Wiera = window.Wiera = {
+            "HOME_PAGE" : "{:C('HOME_PAGE')}",
+            "VAR_ROOT"  : "__ROOT__",
+            "DEFAULT_IMG" : "{:get_cover('', 'default')}"
+        }
+    </script>
+</head>
+<body class="{$_page_name}">
+    <block name="full_wrap">
+        <block name="hook_page_header">
+            <div class="clearfix hook hook-page-header">
+                {:hook('PageHeader')} <!-- 文档开始钩子 -->
+            </div>
+        </block>
+
+        <block name="wrap">
+                <div class="clearfix full-container">
+                    <div id="main" class="main">
+                        <block name="main">这里是内容</block>
+                    </div>
+                </div>
+        </block>
+
+        <block name="hook_page_footer">
+            <div class="clearfix hook hook-page-footer">
+                {:hook('PageFooter')} <!-- 文档末尾钩子 -->
+            </div>
+        </block>
+    </block>
+
+    <block name="full_script">
+        <div class="clearfix full-script">
+            <div class="container-fluid">
+                <include file="$_home_public_modal" /> <!-- 弹窗 -->
+                <script type="text/javascript" src="__CUI__/js/cui.min.js"></script>
+                <script type="text/javascript" src="__HOME_JS__/home.js"></script>
+                <block name="script"></block>
+                {:C('WEB_SITE_STATISTICS')} <!-- 站点统计代码 -->
+            </div>
+        </div>
+    </block>
+</body>
+</html>

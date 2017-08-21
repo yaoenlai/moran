@@ -1,0 +1,300 @@
+/*******pay style*******/
+.clear{
+    clear:both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+.title-pay{
+    width:100%;
+    height:1.538461538461538rem;
+    background: url('../img/img_ribbon1@3x.png') top center no-repeat;
+    background-size:100% 100%;
+}
+
+.title-pay h1{
+    font-size:0.74rem;
+    line-height: 1.538461538461538rem;
+    color: #4f4f47;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pay-list{
+    width:100%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.pay-way{
+    width:100%;
+    height: 2.115384615384615rem;
+    margin-top: 0.7692307692307692rem;
+    float: left;
+    border-bottom: 1px solid #cfd5da;
+    clear: both;
+
+}
+
+.pay-left{
+    width: 55%;
+    float: left;
+    display: inline;
+    position: relative;
+    margin-left:10%;
+}
+.pay-left .selected{
+    float: left;
+    display: inline;
+    text-align: right;
+    line-height: 0.9259259259259259rem;
+    margin-right: 0.3703703703703704rem;
+    position: absolute;
+    top:0.4814814814814815rem;
+    left:-0.7407407407407407rem;
+}
+
+.pay-left .selected img{
+    width: 0.4rem;
+    height: 0.4rem;
+    line-height: 1.296296296296296rem;
+    vertical-align: top;
+}
+
+.pay-left .price-icon{
+    float: left;
+    display: inline;
+    width: 3.3rem;
+    height: 1.3rem;
+    background-size:100% 100%;
+}
+
+.pay-left .recommend-icon {
+    float: left;
+    display: inline;
+    margin-left: 0.1923076923076923rem;
+    border: 0;
+    width: 0.9615384615384615rem;
+    height: 0.7692307692307692rem;
+}
+.pay-right{
+    width: 35%;
+    float: right;
+    display: inline;
+}
+
+.pay-give p {
+    font-size: 0.3555rem;
+    line-height:0.711rem;
+    text-align: right;
+    color: #fe6055;
+}
+
+.pay-give p span{
+    font-size: 0.74rem;
+}
+
+.pay-down{
+    color:#999999;
+    font-size: 0.4814814814814815rem;
+    line-height:0.4814814814814815rem;
+    text-align: right;
+}
+
+.price-day{
+    line-height:0.962962962962963rem;
+}
+
+.pay-botton{
+    width: 100%;
+    height: 1.296296296296296rem;
+    clear: both;
+    background: #ffe25c;
+    -moz-border-radius: 0.1851851851851852rem;
+    -webkit-border-radius: 0.1851851851851852rem;
+    border-radius: 0.1851851851851852rem;
+    margin-top: 0.7407407407407407rem;
+}
+.pay-botton p{
+    text-align: center;
+    font-size: 0.5555555555555556rem;
+    line-height: 0.6481481481481481rem;
+    padding-top: 0.2777777777777778rem;
+    padding-bottom: 0.2777777777777778rem;
+    color: #e25252;
+    cursor: pointer;
+}
+
+/*************订单详情***********/
+.detail-title{
+    height:1.296296296296296rem;
+    width: 100%;
+    background: #f4f4f4;
+}
+
+.detail-title p{
+    text-align: left;
+    color: #999999;
+    font-size: 0.5185185185185185rem;
+    line-height: 1.296296296296296rem;
+    margin-left: 0.5651577503429355rem;
+}
+
+.detail-content {
+    width: 100%;
+    height:1.851851851851852rem;
+}
+
+.detail-left-text{
+    float: left;
+    display: inline;
+}
+
+.detail-left-text p{
+    text-align: left;
+    color: #999999;
+    font-size: 0.5185185185185185rem;
+    line-height: 1.296296296296296rem;
+    margin-left: 0.5651577503429355rem;
+}
+
+.detail-right-text{
+    float: right;
+    display: inline;
+}
+
+.detail-right-text p{
+    text-align: left;
+    color: #999999;
+    font-size: 0.5185185185185185rem;
+    line-height: 1.296296296296296rem;
+}
+.detail-right-text .text-color .rule{
+    font-size: 0.25rem;
+}
+
+.detail-right-text .detail-phone{
+    width:3.703703703703704rem;
+    font-size: 0.5185185185185185rem;
+    line-height: 1rem;
+    border: none;
+    border-bottom: 1px solid #999999;
+    text-align: right;
+    margin-right: 0.45rem;
+}
+
+.detail-right-text .text-color{
+    color:#222222;
+}
+
+.detail-paymethod-title{
+    height:1.296296296296296rem;
+    width: 100%;
+    background: #f4f4f4;
+}
+
+.detail-paymethod-title p{
+    text-align: left;
+    color: #999999;
+    font-size: 0.5185185185185185rem;
+    line-height: 1.296296296296296rem;
+    margin-left: 0.5651577503429355rem;
+}
+
+.paymethod-list{
+    width:100%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.paymethod{
+    width: 100%;
+    float: left;
+    display: inline;
+    position: relative;
+}
+
+.paymethod .pay-icon{
+    float: left;
+    display: inline;
+    width: 1.481481481481481rem;
+    height: 1.481481481481481rem;
+    margin-left: 0.5651577503429355rem;
+    background-size:100% 100%;
+}
+
+.paymethod-left {
+    width: 100%;
+    height:2.592592592592593rem;
+    float: left;
+    display: inline;
+    padding-top: 0.5555555555555556rem;
+    padding-bottom: 0.5555555555555556rem;
+    border-bottom: 1px solid #cfd5da;
+}
+
+.paymethod-text{
+    text-align: left;
+    float: left;
+    display: inline;
+    font-size: 0.5185185185185185rem;
+    line-height: 1.51851851851852rem;
+    margin-left: 0.5555555555555556rem;
+    color: #555555;
+
+}
+.paymethod .selected{
+    width: 100%;
+    float: right;
+    display: inline;
+    text-align: right;
+    line-height: 0.9259259259259259rem;
+    margin-right: 0.3703703703703704rem;
+    position: absolute;
+    top:0.7814814814814815rem;
+    left:-0.555556rem;
+}
+
+.selected img{
+    width: 0.9259259259259259rem;
+    height: 0.9259259259259259rem;
+    vertical-align: top;
+}
+
+.pay-now-botton{
+    width:100%;
+    height:1.814814814814815rem;
+    background: #ac39b9;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.pay-now-botton p{
+    text-align: center;
+    font-size: 0.5555555555555556rem;
+    line-height: 1.814814814814815rem;
+    color: #ffffff;
+}
+
+/*************pay completed***************/
+.pay-result{
+    width: 100%;
+    margin-top: 1.111111111111111rem;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+
+}
+.pay-result img{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.pay-success{
+   margin-top: 0.7692307692307692rem;
+    font-size: 0.7692307692307692rem;
+    color: #31a831;
+    text-align: center;
+}
+

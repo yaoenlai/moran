@@ -1,0 +1,129 @@
+<extend name="$_module_layout"/>
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__/pay.css">
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__JS__/H5FontSize.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".paymethod").click(function(){
+                var selectTemplate = '<div class="selected"> <img src="__IMG__/icon_tick3@2x.png" class="icon_tick2"> </div>';
+                var paymethod = $(this).attr('paymethod');
+                $(".paymethod").val(paymethod);
+                var channel_type = $(this).attr('datakey');
+                $(".channel_type").val(channel_type);
+
+                $('.selected').remove();
+                $(this).children(".paymethod-left").append(selectTemplate);
+            });
+            // 支付方式 分渠道 现代支付、原生支付、等等..... 需要 channel_type区分　
+            $(".pay-now-botton").click(function(){
+                var pay_way =  $(".payway").val();
+                var phone = $(".detail-phone").val();
+                var ready_submit = true;
+                if((typeof(phone) != 'undefined') && (phone != '')) {
+                    if(!(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(phone))){
+                        alert("请输入正确的11位手机号码");
+                        $(".detail-phone").focus();
+                        ready_submit = false;
+                    }
+                }
+                //go to url
+                if(ready_submit) {
+                    $("#submit-pay").submit();
+                }
+            });
+        });
+    </script>
+</block>
+
+<block name="main">
+    <div class="container">
+        <form action="{:U('Love/order/pay')}" method="post" id="submit-pay">
+        <div class="panel-body">
+            <div class="detail-title">
+                <p>订单详情</p>
+            </div>
+            <div class="detail-content">
+                <div class="detail-left-text">
+                    <p>用户</p>
+                </div>
+
+                <div class="detail-right-text">
+                    <p class="text-color">{$user.nickname}({$user.id})</p>
+                </div>
+
+            </div>
+            <div class="detail-content">
+                <div class="detail-left-text">
+                    <p>内容</p>
+                </div>
+
+                <div class="detail-right-text">
+                    <p class="text-color">
+                        <span>{$choice_package.alias_name}</span>
+                        <if condition="$show_phone_input">
+                            <a href="{:U('Love/order/rule')}" class="rule">(话费赠送)</a>
+                        </if>
+                    </p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="detail-content">
+                <div class="detail-left-text">
+                    <p>金额</p>
+                </div>
+
+                <div class="detail-right-text">
+                    <p>{$choice_package.money} 元</p>
+                </div>
+            </div>
+            <if condition="$show_phone_input">
+                <div class="clear"></div>
+                <div class="detail-content">
+                    <div class="detail-left-text">
+                        <p>手机号码</p>
+                    </div>
+
+                    <div class="detail-right-text">
+                        <input name="phone" value="" class="detail-phone" id="detail-phone" maxlength="11">
+                    </div>
+                </div>
+            </if>
+            <div class="clear"></div>
+            <div class="detail-paymethod-title">
+                <p>支付方式</p>
+            </div>
+            <div class="paymethod-list">
+
+                <div class="paymethod" datakey="12" paymethod="1">
+                    <div class="paymethod-left">
+                        <img src="__IMG__/logo_alipay@2x.png" class="pay-icon">
+                        <p class="paymethod-text">支付宝</p>
+                    </div>
+                    <div class="selected">
+                        <img src="__IMG__/icon_tick3@2x.png" class="icon_tick2">
+                    </div>
+                </div>
+
+                <div class="paymethod" datakey="{$package_id}" paymethod="2">
+                    <div class="paymethod-left">
+                        <img src="__IMG__/logo_weixin@2x.png" class="pay-icon">
+                        <p class="paymethod-text">微信支付</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <div class="pay-now-botton">
+                <input type="hidden" name="paymethod" value="1" class="paymethod">
+                <input type="hidden" name="channel_type" value="12" class="channel_type">
+                <input type="hidden" name="user_id" value="{$user.id}" class="user_id">
+                <input type="hidden" name="package_id" value="{$package_id}" class="package_id">
+                <p>立即支付:{$choice_package.money}元</p>
+            </div>
+            </form>
+        </div>
+    </div>
+</block>

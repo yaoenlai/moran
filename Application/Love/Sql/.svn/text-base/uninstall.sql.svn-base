@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `oc_love_attribute`;
+DROP TABLE IF EXISTS `oc_love_follow`;
+DROP TABLE IF EXISTS `oc_love_message`;
+DROP TABLE IF EXISTS `oc_love_person`;
+DROP TABLE IF EXISTS `oc_love_type`;
+DROP TABLE IF EXISTS `oc_love_score_log`;
+DROP TABLE IF EXISTS `oc_love_login_log`;
+DROP TABLE IF EXISTS `oc_love_talk`;
+DROP TABLE IF EXISTS `oc_love_talk_recent`;
+DROP TABLE IF EXISTS `oc_love_message_push`;

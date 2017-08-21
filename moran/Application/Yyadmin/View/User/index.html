@@ -1,0 +1,127 @@
+<extend name="Public:admin" />
+<block name="content">
+<div class="layui-main">
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+	  <legend>用户列表</legend>
+	</fieldset>
+	<div>
+		<if condition="((session('admin_user.grade') eq 1) OR (session('admin_user.grade') eq 2))">
+		<button class="layui-btn add" link="{:U('User/add')}">添加用户</button>
+		</if>
+	</div>
+	<div>
+		<form action="{:U('User/index')}" method='GET' class="layui-form" >
+			<div class="layui-form-item">
+			    <div class="layui-inline">
+				      <label class="layui-form-label">公司名称</label>
+				      <div class="layui-input-inline">
+				        <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入公司名称" class="layui-input" value="{:$_GET['username']}">
+				      </div>
+			    </div>
+			    <div class="layui-inline">
+			    	  <label class="layui-form-label">用户等级</label>
+				      <div class="layui-input-inline">
+				        <select name="grade" lay-verify="text" lay-search="">
+				          <option value="">请选择用户等级</option>
+				          <option value="0" <empty name="_GET['grade']">selected=""</empty>>查看全部</option>
+				          <option value="1" <eq name="_GET['grade']" value='1'>selected=""</eq>>超级管理员</option>
+				          <option value="2" <eq name="_GET['grade']" value='2'>selected=""</eq>>管理员</option>
+				          <option value="3" <eq name="_GET['grade']" value='3'>selected=""</eq>>初级管理员</option>			          
+				        </select>
+			        </div>
+			    </div>
+			    <div class="layui-inline">
+				    <div class="layui-input-block">
+				      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即搜索</button>
+			      	</div>
+		    	</div>
+		    </div>
+	    </form>
+	</div>
+	<div>
+		<table class="layui-table" lay-skin="line">
+		  <colgroup>
+		    <col width="150">
+		    <col width="150">
+		    <col width="200">
+		    <col width="200">
+		    <col width="150">
+		    <col>
+		  </colgroup>
+		  <thead>
+		    <tr>
+		      <th>ID</th>
+		      <th>公司名称</th>
+		      <th>最后登录时间</th>
+		      <th>等级</th>
+		      <th>操作</th>
+		    </tr> 
+		  </thead>
+		  <tbody>
+		  	<volist name='list' id='vo'>
+		    <tr>
+		      <td>{$vo['uid']}</td>
+		      <td>{$vo['username']}</td>
+		      <td>{$vo['last_login_time']|date="Y-m-d H:i:s",###}</td>
+		      <td>
+		      	<switch name="vo.grade">
+		      		<case value="1">超级管理员</case>
+		      		<case value="2">管理员</case>
+		      		<case value="3">初级管理员</case>
+		      	</switch>
+		      </td>
+		      <td>
+		      	<if condition="((session('admin_user.uid') neq $vo['uid']) AND (session('admin_user.grade') neq $vo['grade']))">
+			      	<button class="layui-btn layui-btn-primary layui-btn-small edit" link="{:U('User/edit',array('id'=>$vo['uid']))}">编辑</button>
+			      	<button class="layui-btn layui-btn-danger layui-btn-small del" link="{:U('User/del',array('id'=>$vo['uid']))}">删除</button>
+		      	</if>
+		      </td>
+		    </tr>
+		    </volist>
+		  </tbody>
+		</table>   
+	</div>
+</div>
+</block>
+<block name="script">
+<script>
+layui.config({
+	base: '__JS__',
+});
+layui.use(['form', 'layedit'], function(){
+  var form = layui.form(), $ = layui.jquery, layer = layui.layer;
+  //询问删除
+  $(".del").click(function(){
+	  var obj = $(this)
+	  layer.confirm('是否删除？', {
+		  btn: ['是','否'] //按钮
+		}, function(){
+		  var url = obj.attr('link');
+		  $.ajax({
+			  url: url,
+			  data: {},
+			  dataType: 'json',
+			  success: function(msg){
+				  if(msg.status == '1'){
+					  window.location.reload();
+				  } else {
+					  layer.alert(msg.info);
+				  }
+			  },
+		  });
+		});
+  });
+  $(".add,.edit").click(function(){
+	  var url = $(this).attr('link');
+	  layer.open({
+		  type: 2,
+		  title: false,
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['80%', '70%'],
+		  content: url,
+		});     
+  })
+});
+</script>
+</block>

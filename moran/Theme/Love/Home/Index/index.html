@@ -1,0 +1,244 @@
+<extend name="$_home_public_layout"/>
+<block name="title"><title>{:C('WEB_SITE_TITLE')}－{:C('WEB_SITE_SLOGAN')}</title></block>
+
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__HOME_CSS__/flexslider.css" />
+    <link rel="stylesheet" type="text/css" href="__HOME_CSS__/jquery.bxslider.min.css" />
+    <style>
+    .flexslider{overflow: hidden;width:100% !important;margin:0 auto;}
+
+    </style>
+</block>
+
+<block name="jumbotron">
+    <!-- 轮播图 开始 height:{$config.imgHeight}px-->
+    <div class="flexslider col-xs-12">
+        <ul class="slides" style="overflow: hidden">
+            <!-- 插件配置幻灯片-->
+            <li>
+                <a href="" target="_blank">
+                    <img alt="" src="__HOME_IMG__/index/banner_1.jpg" />
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img alt="" src="__HOME_IMG__/index/banner_2.jpg" />
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <img alt="" src="__HOME_IMG__/index/banner_3.jpg" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 轮播图 结束-->
+
+</block>
+
+<block name="main">
+    <div class="container section section-module">
+
+        <!-- 左图，有文字 -->
+        <div class="col-sm-12 main_box">
+            <div class="container">
+                <div class="col-sm-1 hidden-xs hengxianbox" style="padding-top:20px;">
+                    <div class="hengxian hengxian_01 hengxian_right"></div>
+                    <div class="hengxian hengxian_02 hengxian_right" style="top:61px"></div>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="padding-top:20px;">
+                    <div class="wzleft">
+                        <div class="wzbox">
+                            <span class="title title_01">想爱</span>
+                        </div>
+                        <div class="wzbox">
+                             <span class="title title_02">最真实的严肃婚恋APP</span>
+                        </div>
+                        <div class="wzbox">
+                             <p class="title title_03">想爱，一款严肃婚恋APP</p>
+                             <p class="title title_03">只服务于高端的IOS用户，所有用户均真实有效</p>
+                             <p class="title title_03">为广大单身适龄青年的婚恋牵线搭桥</p>
+                             <p class="title title_03">从此不再为寻找异性伙伴而烦忧</p>
+                             <p class="title title_03">家长逼婚？着急结婚？没有合适的人选？</p>
+                             <p class="title title_03">你的Ta，在“想爱”等你。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xs-12 imgphonebox">
+                    <img class="img1" src="__HOME_IMG__/index/phone1.png">
+                    <div class="imgphonemain">
+                        <img src="__HOME_IMG__/index/phone_01.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右图，做文字 -->
+        <div class="col-sm-12 main_box">
+            
+            
+            <div class="col-sm-5 col-xs-12 imgphonebox">
+                <img class="img1" src="__HOME_IMG__/index/phone1.png">
+                <div class="imgphonemain">
+                    <img src="__HOME_IMG__/index/phone_02.jpg">
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-xs-12" style="padding-top:20px;">
+                <div class="wzright">
+                    <div class="wzbox">
+                        <span class="title title_01">100%真实资料</span><br/>
+                    </div>
+                    <div class="wzbox">
+                         <span class="title title_02">以婚恋为目的的交友，以快乐为导向的聊天。</span>
+                    </div>
+                    <div class="wzbox">
+                         <p>从每一位用户的年龄，身高，体重，血型，生日，学历等资料入手</p>
+                         <p>添加更多的详尽真实资料。</p>
+                         <p>让每一位用户都可以按照自己的要求寻找到最满意的Ta。</p>
+                         <p>来“想爱”，让你的爱真实坦然，让你的情白璧无瑕。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 hidden-xs hengxianbox" style="padding-top:20px;">
+                <div class="hengxian hengxian_01 hengxian_left"></div>
+                <div class="hengxian hengxian_02 hengxian_left"  style="top:61px;"></div>
+            </div>
+        </div>
+
+        <!-- 右图，左文字 -->
+        <div class="col-sm-12 main_box">
+            <div class="container">
+                <div class="col-sm-1 hidden-xs hengxianbox" style="padding-top:20px;">
+                    <div class="hengxian hengxian_01 hengxian_right"></div>
+                    <div class="hengxian hengxian_02 hengxian_right" style="top:61px"></div>
+                </div>
+                <div class="col-sm-6 col-xs-12" style="padding-top:20px;">
+                    <div class="wzleft">
+                        <div class="wzbox">
+                            <span class="title title_01">一键搜索</span>
+                        </div>
+                        <div class="wzbox">
+                             <span class="title title_02">一键搜索附近的同城适龄单身异性</span>
+                        </div>
+                        <div class="wzbox">
+                             <p class="title title_03">根据用户定位，确定每位异性用户的距离</p>
+                             <p class="title title_03">让每一位用户都不需要为网上寻找到的异性结婚伴侣是异地而担忧</p>
+                             <p class="title title_03">不再为同城约会却需跨越整个城区而烦躁。</p>
+                             <p class="title title_03">来“想爱”，让你在最合适的距离寻找到最合适的Ta。</p>
+                             <p class="title title_03">让你在想爱的时候，遇到最好的Ta。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-xs-12 imgphonebox">
+                    <img class="img1" src="__HOME_IMG__/index/phone1.png">
+                    <div class="imgphonemain">
+                        <img src="__HOME_IMG__/index/phone_03.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="col-sm-12 main_box main_boxlast huicolor">
+            <div class="sliderbox">
+                <h1>优质成员</h1>
+                <div class="slider" id="slider">
+                  <div class="slide">
+                    <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1484366723160A1C9644_c.jpg">
+                    <p class="name">女 25岁</p>
+                    <p class="jieshao">喜欢正装穿起来好看的男生。诚实和正直很重要。我是水瓶座。</p>
+                  </div>
+                  <div class="slide">
+                    <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1486193614378ABA64A2_c.jpg">
+                    <p class="name">女 22岁</p>
+                    <p class="jieshao">有人在高楼，有人在深渊，有人光万丈，有人一身锈。世人千万种，浮云莫强求。斯人如彩虹，遇上方知有。</p>
+                  </div>
+                  <div class="slide">
+                    <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1486826298041ADD9C60_c.jpg">
+                    <p class="name">女 27岁</p>
+                    <p class="jieshao">喜欢健身篮球旅行，发掘好吃的馆子，偶尔看个话剧展览装装文艺青年 年轻时也经过几段感情，彷徨过 混沌过 伤过别人 也被别人伤过 偶尔喜欢跟朋友喝点小酒 借着酒劲感慨下操蛋的生活和怀念下逝去的青...</p>
+                  </div>
+
+                </div>
+            </div>
+            <!-- 手机 -->
+            <div class="phoneslider" id="phoneslider">
+                <ul class="row bx-wrapper">
+                    <p class="bx-prev"></p>
+                    <p class="bx-next"></p>
+                    <li class="sliderlibox">
+                        <div class="phoneimgbox">
+                            <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1484366723160A1C9644_c.jpg">
+                        </div>
+                        <p class="name">1女 25岁</p>
+                        <p class="jieshao">喜欢正装穿起来好看的男生。诚实和正直很重要。我是水瓶座。</p>
+                    </li>
+                    <li class="sliderlibox">
+                        <div class="phoneimgbox">
+                            <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1486193614378ABA64A2_c.jpg">
+                        </div>
+                        <p class="name">2女 22岁</p>
+                        <p class="jieshao">有人在高楼，有人在深渊，有人光万丈，有人一身锈。世人千万种，浮云莫强求。斯人如彩虹，遇上方知有。</p>
+                    </li>
+                    <li class="sliderlibox">
+                        <div class="phoneimgbox">
+                            <img src="http://www.momoran.cn/Uploads/getFile_2017-03-02/1486826298041ADD9C60_c.jpg">
+                        </div>
+                        <p class="name">3女 27</p>
+                        <p class="jieshao">喜欢健身篮球旅行，发掘好吃的馆子，偶尔看个话剧展览装装文艺青年 年轻时也经过几段感情，彷徨过 混沌过 伤过别人 也被别人伤过 偶尔喜欢跟朋友喝点小酒 借着酒劲感慨下操蛋的生活和怀念下逝去的青...</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+<script type="text/javascript" src="__HOME_JS__/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="__HOME_JS__/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            prevText:'',
+            nextText: "",
+            thumbCaptions　: true,
+            slideshowSpeed : {$config.second|default='3000'},
+            itemHeight:200,
+            direction: "{$config.direction|default='horizontal'}"
+        });
+    });
+
+
+    $('#slider').bxSlider({
+        slideWidth: 240,
+        minSlides: 2,
+        maxSlides: 3,
+        moveSlides: 1,
+        slideMargin: 30,
+    });
+
+        
+
+    // 切换js
+    var slidermember = $("#phoneslider ul li");  
+    var prevbtn = $(".bx-prev");  //上一个
+    var nextbtn = $(".bx-next");  //上一个
+
+    prevbtn.click(function(){
+        var $one_li = $("#phoneslider ul li").eq(0);   
+        var $two_li = $("#phoneslider ul li").eq(slidermember.length-1);    
+        $two_li.insertBefore($one_li);    //移动节点
+    })
+
+    nextbtn.click(function(){
+        var $two_li = $("#phoneslider ul li").eq(0);   
+        var $one_li = $("#phoneslider ul li").eq(slidermember.length-1);    
+        $two_li.insertAfter($one_li);    //移动节点
+    })
+
+
+</script>
+
+</block>

@@ -1,0 +1,46 @@
+/*******pay style*******/
+.clear{
+    clear:both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+ul,li{list-style: none;}
+.rule-title {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 0.125rem solid #CCCCCC;
+}
+
+.rule-title h3{
+    text-align: center;
+    line-height: 1.75rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+
+}
+
+.rule-body {
+    width: 98%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule-body .first {
+    height: 6rem;
+    line-height: 6rem;
+    font-size: 1.5rem;
+}
+
+.rule-body ul{
+    width: 98%;
+    margin: 0;
+    padding: 0;
+}
+
+.rule-body ul li {
+    width: 100%;
+    margin-bottom: 3.5rem;
+}
