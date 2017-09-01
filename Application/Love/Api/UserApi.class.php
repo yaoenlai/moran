@@ -104,7 +104,7 @@ class UserApi extends Api {
                 'hx_uid' => $hxData['uuid'],
                 'hx_pass' => $post['password']
             );
-            /*
+
               //随机一个机器人UID
               $robotWhere['gender'] = ($post['gender'] == '-1') ? '1' : '-1';
               $robotWhere['id'] = array('BETWEEN','5,4961');
@@ -118,7 +118,7 @@ class UserApi extends Api {
               if($rootres){
               $greetrobot_object->add();//分配机器人完成
               }
-             */
+
             //写入用户扩展信息
             $userext_object = D('Love/Userext');
             $userext['uid'] = $userId;
