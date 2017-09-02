@@ -41,21 +41,27 @@ class HiChatShell extends Shell {
         $userext_model = D('Love/Userext');
         $user_model = D('Love/User');
         //$map['update_time'] = ['gt', $today_time];
+        //发送次数不能大于8次
         $map['times'] = ['lt', 8];
+        $time = $now_time - 259200;
+        //超过三天没有登陆的不推送
+        $map['update_time'] = ['gt',$time];
         $count = $greetrobot_model->where($map)->count();
         //每100条一次
         $total_times = ceil($count/100);var_dump($count);
         for($i = 0; $i < $total_times; $i++) {
-            $list_chats = $greetrobot_model->where($map)->limit($i*100 . ',100')->select();//var_dump($list_chats);
+            $list_chats = $greetrobot_model->where($map)->order('uid desc')->limit($i*100 . ',100')->select();
+            //var_dump($list_chats);exit;
             if(!empty($list_chats)) {
                 foreach($list_chats as $k=>$v) {
 
                     $to_user  = $user_model->alias('a')->join('__ADDON_HXUSER__ b ON a.id = b.uid')->field('a.id,a.username,a.nickname,a.gender,a.update_time')->where(['id' => $v['uid']])->find();
 
                     // 用户最后登录时间大于3天，则主动抛弃用户
-                    if(($now_time - $to_user['update_time']) > 259200) {
+
+                    /* if(($now_time - $to_user['update_time']) > 259200 ) {
                         continue;
-                    }
+                    }*/
 					
 					if($to_user['gender'] == '-1'){//不给女用户发送
 						continue;
