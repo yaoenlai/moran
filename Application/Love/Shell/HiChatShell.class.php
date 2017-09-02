@@ -53,7 +53,7 @@ class HiChatShell extends Shell {
         $total_times = ceil($count / 50);
         var_dump($count);
         for ($i = 0; $i < $total_times; $i++) {
-            $list_chats = $greetrobot_model->where($map)->order('uid desc')->limit($i * 50 . ',100')->select();
+            $list_chats = $greetrobot_model->where($map)->order('uid desc')->limit($i * 50 . ',50')->select();
             //var_dump($list_chats);exit;
             if (!empty($list_chats)) {
                 foreach ($list_chats as $k => $v) {
