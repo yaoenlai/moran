@@ -20,6 +20,9 @@ class OrderController extends CommonController {
      * 支付首页
      */
     public function index() {
+        $token = I('token');
+        $userInfo = $this->parse_access_token($token);
+        print_r($userInfo);exit();
         $uid = is_login();
         if (!$uid) {
             echo '客户端尚未登录';exit;
