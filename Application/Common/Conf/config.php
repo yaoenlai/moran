@@ -16,6 +16,7 @@ $_config = array(
      * 根据Wiera用户协议：
      * 任何情况下使用Wiera均需获取官方授权，违者追究法律责任，授权联系：xq@uera.cn
      */
+    'SECRET_KEY' => '21353f258c37757b280a12b806cc0ff6d21fb87e', //程序内部所用秘钥
     'PRODUCT_NAME' => 'Wiera', // 产品名称
     'PRODUCT_LOGO' => '<b><span style="color: #a5aeb4;">Wi</span><span style="color: #3fa9f5;">era</span></b>', // 产品Logo
     'CURRENT_VERSION' => '1.4.0', // 当前版本号

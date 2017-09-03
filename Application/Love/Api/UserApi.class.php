@@ -56,7 +56,7 @@ class UserApi extends Api {
                 $user_object->rollback();
             }
             $userId = $user_object->add(); //成功返回自增id 例如：21
-            
+
             $hxUser = $this->huanxin->createUser($post['username'], $post['password'], $post['nickname']);
 
             $hxUser_object = D('Love/HxUser');
@@ -105,19 +105,19 @@ class UserApi extends Api {
                 'hx_pass' => $post['password']
             );
 
-              //随机一个机器人UID
-              $robotWhere['gender'] = ($post['gender'] == '-1') ? '1' : '-1';
-              $robotWhere['id'] = array('BETWEEN','5,4961');
-              $robotInfo = D('Love/User')->where($robotWhere)->order('RAND() desc')->limit(1)->find();
+            //随机一个机器人UID
+            $robotWhere['gender'] = ($post['gender'] == '-1') ? '1' : '-1';
+            $robotWhere['id'] = array('BETWEEN', '5,4961');
+            $robotInfo = D('Love/User')->where($robotWhere)->order('RAND() desc')->limit(1)->find();
 
-              //分配机器人给该用户
-              $greetrobot_object = D('Love/Greetrobot');
-              $robot['uid'] = $userId;
-              $robot['robot_uid'] = $robotInfo['id'];
-              $rootres = $greetrobot_object->create($robot,1);//dump($rootres);
-              if($rootres){
-              $greetrobot_object->add();//分配机器人完成
-              }
+            //分配机器人给该用户
+            $greetrobot_object = D('Love/Greetrobot');
+            $robot['uid'] = $userId;
+            $robot['robot_uid'] = $robotInfo['id'];
+            $rootres = $greetrobot_object->create($robot, 1); //dump($rootres);
+            if ($rootres) {
+                $greetrobot_object->add(); //分配机器人完成
+            }
 
             //写入用户扩展信息
             $userext_object = D('Love/Userext');
@@ -127,6 +127,9 @@ class UserApi extends Api {
             if ($userextres) {
                 $userext_object->add(); //分配机器人完成
             }
+            
+            $result = $this->wrap_user_info($data, TRUE);
+            print_r($result);exit();
             $this->ajaxReturn(returnInfo('1', '注册成功!', $data, $this->infoType), $this->returnType);
         } else {
             $this->ajaxReturn(returnInfo('-3', '验签失败!', null, $this->infoType), $this->returnType);
@@ -1296,6 +1299,24 @@ class UserApi extends Api {
         }
         $log_template .= "---------------------------------end---------------------------------------";
         file_put_contents('./' . $_logFile . '.log', $log_template, FILE_APPEND);
+    }
+    
+    
+    /**
+     * 过滤用户敏感信息和客户端无用信息，将用户必要数据包装后返回。
+     * @param  array 	$user 		用户信息
+     * @param  bool 	$genToken 	是否生成鉴权码
+     * @return array       			包装后的用户信息
+     */
+    private function wrap_user_info($user, $genToken) {
+
+        if ($genToken) {
+            $expiry = time() + C('API_TOKEN_INTERVAL');
+            $token = $this->generate_access_token($user, $expiry);
+            $user['access_token'] = $token;
+            $user['token_expiry'] = $expiry;
+        }
+        return $user;
     }
 
 }
