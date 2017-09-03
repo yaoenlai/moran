@@ -148,7 +148,6 @@ class UserApi extends Api {
             $object = D('Love/User');
             $result = $object->login(trim($post['username']), trim($post['password']), true);
             $loginData['update_time'] = time();
-            print_r($result);exit();
             D('Love/User')->where("id={$result['id']}")->save($loginData);
             
             //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 查询结果:'.$post['username'].$post['password'].json_encode($result)."\r\n\r\n",FILE_APPEND);
