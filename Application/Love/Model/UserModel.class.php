@@ -153,6 +153,7 @@ class UserModel extends Model {
 
         $map['status']   = array('eq', 1);
         $user_info = $this->where($map)->find(); //查找用户
+        echo $this->getLastSql();exit();
         if (!$user_info) {
             $this->error = '用户不存在或被禁用！';
         } else {
