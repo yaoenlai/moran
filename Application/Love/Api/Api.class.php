@@ -170,7 +170,7 @@ class Api extends ApiController {
      * @return string      鉴权码
      */
     protected function generate_access_token($user, $expiry) {
-        $content = $expiry . '|' . $user['id'];
+        $content = $expiry . '|' . $user['uid'];
         $token = aes128_encode(C('SECRET_KEY'), $content);
         $token = $this->encode_access_token($token);
         return $token;
