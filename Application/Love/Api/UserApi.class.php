@@ -148,7 +148,9 @@ class UserApi extends Api {
             $object = D('Love/User');
             $result = $object->login(trim($post['username']), trim($post['password']), true);
             $loginData['update_time'] = time();
+            print_r($result);exit();
             D('Love/User')->where("id={$result['id']}")->save($loginData);
+            
             //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 查询结果:'.$post['username'].$post['password'].json_encode($result)."\r\n\r\n",FILE_APPEND);
             if ($result['id'] > 0) {
                 //男士用户，且未付费用户加入系统聊天队列,暂定 user_type == 1 为未付费用户
