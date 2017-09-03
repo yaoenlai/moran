@@ -1,4 +1,5 @@
 <?php
+
 // +----------------------------------------------------------------------
 // | wiera [ Simple Efficient Excellent ]
 // +----------------------------------------------------------------------
@@ -6,13 +7,17 @@
 // +----------------------------------------------------------------------
 // | Author: zxq
 // +----------------------------------------------------------------------
+
 namespace Love\Model;
+
 use Think\Model;
+
 /**
  * 用户模型
  * @author zxq
  */
 class UserModel extends Model {
+
     /**
      * 数据库表名
      * @author zxq
@@ -26,32 +31,26 @@ class UserModel extends Model {
     protected $_validate = array(
         // 验证用户类型
         array('user_type', 'require', '请选择用户类型', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
-
         //验证用户名
         array('nickname', 'require', '昵称不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
-
         // 验证用户名
         array('username', 'require', '请填写用户名', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
         array('username', '3,32', '用户名长度为1-32个字符', self::MUST_VALIDATE, 'length', self::MODEL_INSERT),
         array('username', '', '用户名被占用', self::MUST_VALIDATE, 'unique', self::MODEL_INSERT),
         array('username', '/^(?!_)(?!\d)(?!.*?_$)[\w]+$/', '用户名只可含有数字、字母、下划线且不以下划线开头结尾，不以数字开头！', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
         array('username', 'checkDenyMember', '该用户名禁止使用', self::EXISTS_VALIDATE, 'callback'), //用户名禁止注册
-
         // 验证密码
         array('password', 'require', '请填写密码', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
         array('password', '6,30', '密码长度为6-30位', self::MUST_VALIDATE, 'length', self::MODEL_INSERT),
         array('password', '/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+)$)^[\w~!@#$%^&*()_+{}:"<>?\-=[\];\',.\/]+$/', '密码至少由数字、字符、特殊字符三种中的两种组成', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
         array('repassword', 'password', '两次输入的密码不一致', self::EXISTS_VALIDATE, 'confirm', self::MODEL_INSERT),
-
         // 验证邮箱
         array('email', 'email', '邮箱格式不正确', self::EXISTS_VALIDATE, 'regex', self::MODEL_INSERT),
         array('email', '1,32', '邮箱长度为1-32个字符', self::EXISTS_VALIDATE, 'length', self::MODEL_INSERT),
         array('email', '', '邮箱被占用', self::EXISTS_VALIDATE, 'unique', self::MODEL_INSERT),
-
         // 验证手机号码
         array('mobile', '/^1\d{10}$/', '手机号码格式不正确', self::EXISTS_VALIDATE, 'regex', self::MODEL_INSERT),
         array('mobile', '', '手机号被占用', self::EXISTS_VALIDATE, 'unique', self::MODEL_INSERT),
-
         // 验证注册来源
         array('reg_type', 'require', '注册来源不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_INSERT),
     );
@@ -84,7 +83,7 @@ class UserModel extends Model {
      * @author zxq
      */
     protected function _after_select(&$result, $options) {
-        foreach($result as &$record){
+        foreach ($result as &$record) {
             $this->_after_find($record, $options);
         }
     }
@@ -94,8 +93,8 @@ class UserModel extends Model {
      * @author zxq
      */
     public function user_gender($id) {
-        $list[0]  = '保密';
-        $list[1]  = '男';
+        $list[0] = '保密';
+        $list[1] = '男';
         $list[-1] = '女';
         return isset($id) ? $list[$id] : $list;
     }
@@ -105,8 +104,8 @@ class UserModel extends Model {
      * @author zxq
      */
     public function user_gender_icon($id) {
-        $list[0]  = '<i class="fa fa-genderless"></i>';
-        $list[1]  = '<i class="fa fa-mars text-primary color-blue"></i>';
+        $list[0] = '<i class="fa fa-genderless"></i>';
+        $list[1] = '<i class="fa fa-mars text-primary color-blue"></i>';
         $list[-1] = '<i class="fa fa-venus text-danger color-pink"></i>';
         return isset($id) ? $list[$id] : '';
     }
@@ -116,11 +115,11 @@ class UserModel extends Model {
      * @param  string $username 用户名
      * @return boolean ture 未禁用，false 禁止注册
      */
-    protected function checkDenyMember($username){
+    protected function checkDenyMember($username) {
         $deny = C('user_config.deny_username');
-        $deny = explode ( ',', $deny);
-        foreach ($deny as $k=>$v) {
-            if(stristr($username, $v)){
+        $deny = explode(',', $deny);
+        foreach ($deny as $k => $v) {
+            if (stristr($username, $v)) {
                 return false;
             }
         }
@@ -151,9 +150,8 @@ class UserModel extends Model {
             $map['username'] = array('eq', $account);  // 用户名登陆
         }
 
-        $map['status']   = array('eq', 1);
+        $map['status'] = array('eq', 1);
         $user_info = $this->where($map)->find(); //查找用户
-        echo $this->getLastSql();exit();
         if (!$user_info) {
             $this->error = '用户不存在或被禁用！';
         } else {
@@ -164,7 +162,7 @@ class UserModel extends Model {
                     if ($return) {
                         // 记录登录日志
                         $login_log_object = D('Love/LoginLog');
-                        $login_log_data   = $login_log_object->create();
+                        $login_log_data = $login_log_object->create();
                         $login_log_result = $login_log_object->add($login_log_data);
                         return $user_info;
                     } else {
@@ -174,7 +172,7 @@ class UserModel extends Model {
             }
         }
         //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 错误:'.$this->error."\r\n\r\n",FILE_APPEND);
-        
+
         return false;
     }
 
@@ -192,12 +190,12 @@ class UserModel extends Model {
 
         // 记录登录SESSION和COOKIES
         $auth = array(
-            'uid'        => $user['id'],
-            'username'   => $user['username'],
-            'nickname'   => $user['nickname'],
-            'avatar'     => $user['avatar'],
+            'uid' => $user['id'],
+            'username' => $user['username'],
+            'nickname' => $user['nickname'],
+            'avatar' => $user['avatar'],
             'avatar_url' => get_cover($user['avatar'], 'avatar'),
-            'vip'        => $vip,
+            'vip' => $vip,
         );
         session('user_auth', $auth);
         session('user_auth_sign', $this->data_auth_sign($auth));
@@ -237,7 +235,7 @@ class UserModel extends Model {
     public function data_auth_sign($data) {
         // 数据类型检测
         if (!is_array($data)) {
-            $data = (array)$data;
+            $data = (array) $data;
         }
         ksort($data); //排序
         $code = http_build_query($data); // url编码并生成query字符串
@@ -252,7 +250,7 @@ class UserModel extends Model {
     public function detail($id) {
         //获取基础表信息
         $user_info = $this->find($id);
-        if(!(is_array($user_info) || 1 !== $user_info['status'])){
+        if (!(is_array($user_info) || 1 !== $user_info['status'])) {
             $this->error = '用户被禁用或已删除！';
             return false;
         }
@@ -260,11 +258,11 @@ class UserModel extends Model {
         //根据文档模型获取扩展表的息
         $user_type_name = D('User/Type')->where(array('id' => $user_info['user_type']))->getField('name');
         if ($user_type_name) {
-            $user_extend_object = D('User/User'.ucfirst($user_type_name));
+            $user_extend_object = D('User/User' . ucfirst($user_type_name));
             $extend_data = $user_extend_object->where(array('uid' => $id))->find();
 
             //基础信息与扩展信息合并
-            if(is_array($extend_data)){
+            if (is_array($extend_data)) {
                 $user_info = array_merge($user_info, $extend_data);
             }
         }
@@ -276,25 +274,24 @@ class UserModel extends Model {
 
         return $user_info;
     }
-	
-	
 
     /**
-     *根据条件获取缘分好友
+     * 根据条件获取缘分好友
      * @param array $where 查询条件
      * @param int   $page  页码
      * @param int   $offset 条数
      * @return array
      * */
-    public function getKarmaList($where,$page,$offset){
-        $count = D('Admin/User')->alias('a')->join('__LOVE_PROFILE__ b ON b.uid=a.id',"LEFT")->where($where)->order('id desc')->count();
-        $page = $page>0 ? $page : 1;
-        $offset = $offset>0 ? $offset : 15;
-        $total = ceil($count/$offset);//总页数  = 总条数/条数
-        $page = (abs($page) - 1) * $offset;//从$page开始
-        $data = D('Admin/User')->alias('a')->join('__LOVE_PROFILE__ b ON b.uid=a.id',"LEFT")->where($where)->limit($page,$offset)->order('id desc')->select();
+    public function getKarmaList($where, $page, $offset) {
+        $count = D('Admin/User')->alias('a')->join('__LOVE_PROFILE__ b ON b.uid=a.id', "LEFT")->where($where)->order('id desc')->count();
+        $page = $page > 0 ? $page : 1;
+        $offset = $offset > 0 ? $offset : 15;
+        $total = ceil($count / $offset); //总页数  = 总条数/条数
+        $page = (abs($page) - 1) * $offset; //从$page开始
+        $data = D('Admin/User')->alias('a')->join('__LOVE_PROFILE__ b ON b.uid=a.id', "LEFT")->where($where)->limit($page, $offset)->order('id desc')->select();
         $recharge['data'] = $data;
         $recharge['total'] = $total;
         return $recharge;
     }
+
 }
