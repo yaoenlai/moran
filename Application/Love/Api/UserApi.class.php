@@ -173,7 +173,8 @@ class UserApi extends Api {
                 $returnData['avatar_url'] = $result['avatar_url'];
                 $returnData['nickname'] = $result['nickname'];
                 $returnData['password'] = $hx_r["password"];
-                $this->ajaxReturn(returnInfo('1', '登录成功!', $returnData, $this->infoType), $this->returnType);
+                $result = $this->wrap_user_info($returnData, TRUE);
+                $this->ajaxReturn(returnInfo('1', '登录成功!', $result, $this->infoType), $this->returnType);
             } else {
                 //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 错误数据:'.json_encode($post)."\r\n\r\n",FILE_APPEND);
                 //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 查询cuowu:'.json_encode($result)."\r\n\r\n",FILE_APPEND);
