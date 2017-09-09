@@ -65,7 +65,6 @@ class Api extends ApiController {
             return FALSE;
         $devInfo = D('Love/Site')->getSiteConf($post['sid']);
         $key = $devInfo[$keyType];
-        echo $key."<hr/>";
         //$key ='b1adf3c21a3b7a1573999bf07a10baf5';
         if (empty($key))
             $key = $devInfo['key'];
@@ -73,7 +72,8 @@ class Api extends ApiController {
         foreach ($this->notSign as $v) {//注销不参与签名的键
             unset($post[$v]);
         }//dump($post);dump(json_encode($post));
-        $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
+       echo $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
+       exit();
         $iSign = md5($iSignStr);
         //dump($iSignStr);dump($iSign);//exit;
         file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x") . ' 接受的数据:' . json_encode($post) . "\r\n待签名串:" . $iSignStr . "\r\n签名结果:" . $iSign . "(" . $sign . ")\r\n", FILE_APPEND);
