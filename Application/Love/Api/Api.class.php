@@ -65,6 +65,7 @@ class Api extends ApiController {
             return FALSE;
         $devInfo = D('Love/Site')->getSiteConf($post['sid']);
         $key = $devInfo[$keyType];
+        echo $key."<hr/>";
         //$key ='b1adf3c21a3b7a1573999bf07a10baf5';
         if (empty($key))
             $key = $devInfo['key'];
