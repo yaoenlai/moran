@@ -42,7 +42,7 @@ class Api extends ApiController {
         $post = $this->requestData;
         $sign = $post['sign']; //原始sign
         $iSign = $this->createSign($post, $keyType); //计算的sign
-        echo $iSign;exit();
+        echo $iSign;
         if ($iSign == $sign) {
             return TRUE;
         } else {
