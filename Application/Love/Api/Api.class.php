@@ -42,7 +42,7 @@ class Api extends ApiController {
         $post = $this->requestData;
         $sign = $post['sign']; //原始sign
         $iSign = $this->createSign($post, $keyType); //计算的sign
-        echo $iSign;
+        echo $iSign;exit();
         if ($iSign == $sign) {
             return TRUE;
         } else {
@@ -72,7 +72,7 @@ class Api extends ApiController {
         foreach ($this->notSign as $v) {//注销不参与签名的键
             unset($post[$v]);
         }//dump($post);dump(json_encode($post));
-       echo $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
+        $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
        
         $iSign = md5($iSignStr);
         //dump($iSignStr);dump($iSign);//exit;
