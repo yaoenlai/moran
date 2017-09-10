@@ -26,7 +26,9 @@ class Api extends ApiController {
         parent::_initialize();
         if (empty($this->requestData['sid']))
             $this->requestData['sid'] = I('request.sid', 0);
-        $this->sid = $this->requestData['sid'];
+            $this->sid = $this->requestData['sid'];
+            echo $this->sid;
+            exit();
         if (!$this->sid) {
             $this->ajaxReturn(returnInfo('-1', 'sid不能为空', null, $this->infoType), $this->returnType);
         }
@@ -42,7 +44,8 @@ class Api extends ApiController {
         $post = $this->requestData;
         $sign = $post['sign']; //原始sign
         $iSign = $this->createSign($post, $keyType); //计算的sign
-        echo $iSign;exit();
+        echo $iSign;
+        exit();
         if ($iSign == $sign) {
             return TRUE;
         } else {
@@ -73,7 +76,7 @@ class Api extends ApiController {
             unset($post[$v]);
         }//dump($post);dump(json_encode($post));
         $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
-       
+
         $iSign = md5($iSignStr);
         //dump($iSignStr);dump($iSign);//exit;
         file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x") . ' 接受的数据:' . json_encode($post) . "\r\n待签名串:" . $iSignStr . "\r\n签名结果:" . $iSign . "(" . $sign . ")\r\n", FILE_APPEND);

@@ -42,7 +42,7 @@ class UserApi extends Api {
             $nickName = D('Admin/SysNicks')->randomNickname($post['gender']); //随机获取一个昵称
             $user_object = D('Love/User'); //实例化pc用户Db
             $user_object->startTrans();
-            $gender = ($post['gender'] == '-1') ? '女士' : '男士';
+//            $gender = ($post['gender'] == '-1') ? '女士' : '男士';
             $post['nickname'] = $nickName; //用户名
             $post['username'] = 'yh' . substr(time(), 2, 10); //用户名
             $post['password'] = 'mm' . rand(pow(10, (8 - 1)), pow(10, 8) - 1); //生成八位随机密码
@@ -114,6 +114,7 @@ class UserApi extends Api {
             $greetrobot_object = D('Love/Greetrobot');
             $robot['uid'] = $userId;
             $robot['robot_uid'] = $robotInfo['id'];
+            $robot['gender'] = ($post['gender'] == '-1') ? '1' : '-1';
             $rootres = $greetrobot_object->create($robot, 1); //dump($rootres);
             if ($rootres) {
                 $greetrobot_object->add(); //分配机器人完成
@@ -129,7 +130,6 @@ class UserApi extends Api {
             }
             
             $result = $this->wrap_user_info($data, TRUE);
-            print_r($result);exit();
             $this->ajaxReturn(returnInfo('1', '注册成功!', $data, $this->infoType), $this->returnType);
         } else {
             $this->ajaxReturn(returnInfo('-3', '验签失败!', null, $this->infoType), $this->returnType);
