@@ -74,11 +74,11 @@ class Api extends ApiController {
             unset($post[$v]);
         }//dump($post);dump(json_encode($post));
         $iSignStr = createLinkstring(argSort($post)) . '&' . $keyType . '=' . $key;
-        echo "签名前：".$iSignStr;
-        echo "<hr/>";
+//        echo "签名前：".$iSignStr;
+//        echo "<hr/>";
         $iSign = md5($iSignStr);
-        echo "签名后：".$iSign;
-        exit();
+//        echo "签名后：".$iSign;
+//        exit();
         //dump($iSignStr);dump($iSign);//exit;
         file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x") . ' 接受的数据:' . json_encode($post) . "\r\n待签名串:" . $iSignStr . "\r\n签名结果:" . $iSign . "(" . $sign . ")\r\n", FILE_APPEND);
         return $iSign;
