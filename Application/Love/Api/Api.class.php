@@ -28,7 +28,7 @@ class Api extends ApiController {
             $sid = $this->requestData['sid'] = I('request.sid', 0);
             $this->sid = $this->requestData['sid'];
 //            $data['sid'] = $sid;
-            
+            echo $sid;exit();
         if ($sid == 0) {
             $this->ajaxReturn(returnInfo('-1', 'sid不能为空', null, $this->infoType), $this->returnType);
         }
