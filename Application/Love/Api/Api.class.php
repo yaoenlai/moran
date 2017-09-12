@@ -29,7 +29,7 @@ class Api extends ApiController {
             $this->sid = $this->requestData['sid'];
 //            $data['sid'] = $sid;
             
-        if ($sid>0) {
+        if ($sid == 0) {
             $this->ajaxReturn(returnInfo('-1', 'sid不能为空', null, $this->infoType), $this->returnType);
         }
     }
