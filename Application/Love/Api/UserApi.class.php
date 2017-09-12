@@ -118,7 +118,6 @@ class UserApi extends Api {
             $rootres = $greetrobot_object->create($robot, 1); //dump($rootres);
             if ($rootres) {
                 $greetrobot_object->add(); //分配机器人完成
-                echo $greetrobot_object->getLastSql();
             }
 
             //写入用户扩展信息
