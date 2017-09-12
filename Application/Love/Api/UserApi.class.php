@@ -114,10 +114,11 @@ class UserApi extends Api {
             $greetrobot_object = D('Love/Greetrobot');
             $robot['uid'] = $userId;
             $robot['robot_uid'] = $robotInfo['id'];
-            $robot['gender'] = ($post['gender'] == '-1') ? '1' : '-1';
+            $robot['gender'] = $post['gender'];
             $rootres = $greetrobot_object->create($robot, 1); //dump($rootres);
             if ($rootres) {
                 $greetrobot_object->add(); //分配机器人完成
+                echo $greetrobot_object->getLastSql();
             }
 
             //写入用户扩展信息
