@@ -130,7 +130,7 @@ class UserApi extends Api {
             }
             
             $result = $this->wrap_user_info($data, TRUE);
-            $this->ajaxReturn(returnInfo('1', '注册成功!', $data, $this->infoType), $this->returnType);
+            $this->ajaxReturn(returnInfo('1', '注册成功!', $result, $this->infoType), $this->returnType);
         } else {
             $this->ajaxReturn(returnInfo('-3', '验签失败!', null, $this->infoType), $this->returnType);
         }
