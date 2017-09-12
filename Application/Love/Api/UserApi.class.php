@@ -175,6 +175,8 @@ class UserApi extends Api {
                 $returnData['nickname'] = $result['nickname'];
                 $returnData['password'] = $hx_r["password"];
                 $result = $this->wrap_user_info($returnData, TRUE);
+                echo $this->returnType.'-'.$this->infoType;
+                exit();
                 $this->ajaxReturn(returnInfo('1', '登录成功!', $result, $this->infoType), $this->returnType);
             } else {
                 //file_put_contents('/tmp/sign.txt', microDate("y-m-d H:i:s.x").' 错误数据:'.json_encode($post)."\r\n\r\n",FILE_APPEND);
