@@ -61,6 +61,7 @@ class ApiController extends Controller {
         $options['app_name'] = $this->app_name;
         $this->huanxin = new Easemob($options);
         $this->infoType = I('request.infoType', 0);
+        echo I('request.returnType', 'json');exit();
         $this->returnType = ($this->infoType == 1 || $this->infoType == 2) ? 'EVAL' : I('request.returnType', 'json');
         $requestData = file_get_contents('php://input'); //接收原始数据
         $this->requestData = requestData($requestData, $this->infoType); //根据infoType解析不同数据
